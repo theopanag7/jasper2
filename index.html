@@ -10,6 +10,7 @@ navigation: True
 into the {body} of the default.hbs template -->
 
 <!-- The big featured header, it uses blog cover image as a BG if available -->
+<!--
 <header class="site-header outer {% if page.cover or site.cover %}" style="background-image:  url({{ site.baseurl }}{% if page.cover %}{{ page.cover }}{% elsif site.cover %}{{ site.cover }}{% endif %}) {% else %}no-cover{% endif %}">
     <div class="inner">
         <div class="site-header-content">
@@ -25,6 +26,31 @@ into the {body} of the default.hbs template -->
         {% include site-nav.html %}
     </div>
 </header>
+-->
+
+
+<header class="site-header outer {% if page.cover or site.cover %}" style="background-image:  url({{ site.baseurl }}{% if page.cover %}{{ page.cover }}{% elsif site.cover %}{{ site.cover }}{% endif %}) {% else %}no-cover{% endif %}">
+    <div class="inner">
+        <div class="site-header-content">
+            {% if site.profile_pic %}
+                <img class="author-profile-image" src="{{ site.baseurl }}{{ site.profile_pic }}"/>
+            {% endif %}
+            <h1 class="site-title">{{ site.profile_name }}</h1>
+            {% if site.description %}
+                <h2 class="author-bio">{{ site.description }}</h2>
+            {% endif %}
+
+            <div class="author-meta">
+                {% if site.profile_location %}
+                    <div class="author-location">{{ site.profile_location }} <span class="bull">&bull;</span></div>
+                {% endif %}
+                {% include social-links.html %}
+            </div>
+        </div>
+        {% include site-nav.html %}
+    </div>
+</header>
+
 
 <!-- The main content area -->
 <main id="site-main" class="site-main outer" role="main">
